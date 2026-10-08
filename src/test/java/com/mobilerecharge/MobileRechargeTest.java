@@ -6,30 +6,37 @@ import static org.junit.Assert.*;
 public class MobileRechargeTest {
 
     @Test
-    public void testValidMobileNumber() {
-        MobileRecharge service = new MobileRecharge();
-        assertTrue(service.isValidMobileNumber("9876543210"));
-        assertFalse(service.isValidMobileNumber("12345"));
+    public void testCalculateTotalAmount() {
+        MobileRecharge app = new MobileRecharge();
+        // Test Case 1: 299 + 10 = 309
+        assertEquals(309, app.calculateTotalAmount(299, 10));
     }
 
     @Test
-    public void testCalculateTotalPayable() {
-        MobileRecharge service = new MobileRecharge();
-        assertEquals(509, service.calculateTotalPayable(499, 10));
+    public void testGetValidityDays() {
+        MobileRecharge app = new MobileRecharge();
+        // Test Case 2: Plan 299 gives 28 days
+        assertEquals(28, app.getValidityDays(299));
     }
 
     @Test
-    public void testGetPlanValidityDays() {
-        MobileRecharge service = new MobileRecharge();
-        assertEquals(28, service.getPlanValidityDays(199));
-        assertEquals(56, service.getPlanValidityDays(499));
-        assertEquals(84, service.getPlanValidityDays(799));
+    public void testCalculateTotalDataGB() {
+        MobileRecharge app = new MobileRecharge();
+        // Test Case 3: 2 GB/day for 28 days = 56 GB
+        assertEquals(56, app.calculateTotalDataGB(2, 28));
     }
 
     @Test
-    public void testProcessRechargeSuccess() {
-        MobileRecharge service = new MobileRecharge();
-        String result = service.processRecharge("9876543210", 499);
-        assertEquals("SUCCESS: Recharged Rs.499 for 9876543210", result);
+    public void testApplyDiscount() {
+        MobileRecharge app = new MobileRecharge();
+        // Test Case 4: 599 plan minus 50 discount = 549
+        assertEquals(549, app.applyDiscount(599, 50));
+    }
+
+    @Test
+    public void testCalculateRewardPoints() {
+        MobileRecharge app = new MobileRecharge();
+        // Test Case 5: 500 plan / 10 = 50 reward points
+        assertEquals(50, app.calculateRewardPoints(500));
     }
 }
