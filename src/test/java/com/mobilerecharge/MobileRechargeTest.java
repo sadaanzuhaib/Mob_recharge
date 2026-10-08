@@ -9,7 +9,7 @@ public class MobileRechargeTest {
     public void testCalculateTotalAmount() {
         MobileRecharge app = new MobileRecharge();
         // Test Case 1: 299 + 10 = 309
-        assertEquals(999, app.calculateTotalAmount(299, 10));
+        assertEquals(309, app.calculateTotalAmount(299, 10));
     }
 
     @Test
